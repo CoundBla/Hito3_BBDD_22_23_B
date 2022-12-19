@@ -1,18 +1,34 @@
 package ormExpressCorreos.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "trabaja")
 public class Trabaja {
-    private Date fecha;
-    private int id_oficina;
-    private int id_turno;
-    private String dni_cartero;
 
-    public Trabaja(Date fecha, int id_oficina, int id_turno, String dni_cartero) {
+    @Column(name = "fecha")
+    private Date fecha;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "oficina")
+    private Oficina oficina;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "turno")
+    private Turno turno;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "cartero")
+    private Cartero cartero;
+
+    public Trabaja(){}
+
+    public Trabaja(Date fecha, Oficina oficina, Turno turno, Cartero cartero) {
         this.fecha = fecha;
-        this.id_oficina = id_oficina;
-        this.id_turno = id_turno;
-        this.dni_cartero = dni_cartero;
+        this.oficina = oficina;
+        this.turno = turno;
+        this.cartero = cartero;
     }
 
     public Date getFecha() {
@@ -23,27 +39,27 @@ public class Trabaja {
         this.fecha = fecha;
     }
 
-    public int getId_oficina() {
-        return id_oficina;
+    public Oficina getOficina() {
+        return oficina;
     }
 
-    public void setId_oficina(int id_oficina) {
-        this.id_oficina = id_oficina;
+    public void setOficina(Oficina oficina) {
+        this.oficina = oficina;
     }
 
-    public int getId_turno() {
-        return id_turno;
+    public Turno getTurno() {
+        return turno;
     }
 
-    public void setId_turno(int id_turno) {
-        this.id_turno = id_turno;
+    public void setTurno(Turno turno) {
+        this.turno = turno;
     }
 
-    public String getDni_cartero() {
-        return dni_cartero;
+    public Cartero getCartero() {
+        return cartero;
     }
 
-    public void setDni_cartero(String dni_cartero) {
-        this.dni_cartero = dni_cartero;
+    public void setCartero(Cartero cartero) {
+        this.cartero = cartero;
     }
 }

@@ -1,20 +1,41 @@
 package ormExpressCorreos.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "segmento")
 public class Segmento {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id_segmento")
     private int id_segmento;
+
+    @Column(name = "num_ini")
     private int num_ini;
+
+    @Column(name = "num_fin")
     private int num_fin;
-    private int id_calle;
-    private int id_ruta;
+
+    @Column(name = "num_orden")
     private int num_orden;
 
-    public Segmento(int id_segmento, int num_ini, int num_fin, int id_calle, int id_ruta, int num_orden) {
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "calle")
+    private Calle calle;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ruta")
+    private Ruta ruta;
+
+    public Segmento(){}
+    public Segmento(int id_segmento, int num_ini, int num_fin, int num_orden, Calle calle, Ruta ruta) {
         this.id_segmento = id_segmento;
         this.num_ini = num_ini;
         this.num_fin = num_fin;
-        this.id_calle = id_calle;
-        this.id_ruta = id_ruta;
         this.num_orden = num_orden;
+        this.calle = calle;
+        this.ruta = ruta;
     }
 
     public int getId_segmento() {
@@ -41,22 +62,6 @@ public class Segmento {
         this.num_fin = num_fin;
     }
 
-    public int getId_calle() {
-        return id_calle;
-    }
-
-    public void setId_calle(int id_calle) {
-        this.id_calle = id_calle;
-    }
-
-    public int getId_ruta() {
-        return id_ruta;
-    }
-
-    public void setId_ruta(int id_ruta) {
-        this.id_ruta = id_ruta;
-    }
-
     public int getNum_orden() {
         return num_orden;
     }
@@ -65,4 +70,19 @@ public class Segmento {
         this.num_orden = num_orden;
     }
 
+    public Calle getCalle() {
+        return calle;
+    }
+
+    public void setCalle(Calle calle) {
+        this.calle = calle;
+    }
+
+    public Ruta getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(Ruta ruta) {
+        this.ruta = ruta;
+    }
 }

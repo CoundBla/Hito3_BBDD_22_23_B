@@ -1,9 +1,23 @@
 package ormExpressCorreos.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "turno")
 public class Turno {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id_turno")
     private int id_turno;
+
+    @Column(name = "hora_entrada")
     private String hora_entrada;
+
+    @Column(name = "hora_salida")
     private String hora_salida;
+
+    @Column(name = "tipo_turno",nullable = false)
     private String tipo_turno;
 
     public Turno(int id_turno, String hora_entrada, String hora_salida, String tipo_turno) {

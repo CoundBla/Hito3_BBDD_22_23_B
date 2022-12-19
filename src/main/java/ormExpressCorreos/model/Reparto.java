@@ -1,26 +1,59 @@
 package ormExpressCorreos.model;
+import javax.persistence.*;
 import java.util.Date;
 
-
+@Entity
+@Table(name = "reparto")
 public class Reparto {
-    private Date fecha_alta;
-    private int num_cartas;
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id_reparto")
     private int id_reparto;
+
+    @Column(name = "fecha_alta",nullable = false)
+    private Date fecha_alta;
+
+    @Column(name = "num_cartas")
+    private int num_cartas;
+
+    @Column(name = "peso")
     private int peso;
-    private int id_ruta;
-    private String dni_cartero;
-    private String matricula;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ruta")
+    private Ruta ruta;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "cartero")
+    private Cartero cartero;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "coche")
+    private Coche coche;
+
+    @Column(name = "fecha_reserva")
     private Date fecha_reserva;
 
-    public Reparto(Date fecha_alta, int num_cartas, int id_reparto, int peso, int id_ruta, String dni_cartero, String matricula, Date fecha_reserva) {
+    public Reparto(){}
+
+    public Reparto(int id_reparto, Date fecha_alta, int num_cartas, int peso, Ruta ruta, Cartero cartero, Coche coche, Date fecha_reserva) {
+        this.id_reparto = id_reparto;
         this.fecha_alta = fecha_alta;
         this.num_cartas = num_cartas;
-        this.id_reparto = id_reparto;
         this.peso = peso;
-        this.id_ruta = id_ruta;
-        this.dni_cartero = dni_cartero;
-        this.matricula = matricula;
+        this.ruta = ruta;
+        this.cartero = cartero;
+        this.coche = coche;
         this.fecha_reserva = fecha_reserva;
+    }
+
+    public int getId_reparto() {
+        return id_reparto;
+    }
+
+    public void setId_reparto(int id_reparto) {
+        this.id_reparto = id_reparto;
     }
 
     public Date getFecha_alta() {
@@ -39,14 +72,6 @@ public class Reparto {
         this.num_cartas = num_cartas;
     }
 
-    public int getId_reparto() {
-        return id_reparto;
-    }
-
-    public void setId_reparto(int id_reparto) {
-        this.id_reparto = id_reparto;
-    }
-
     public int getPeso() {
         return peso;
     }
@@ -55,28 +80,28 @@ public class Reparto {
         this.peso = peso;
     }
 
-    public int getId_ruta() {
-        return id_ruta;
+    public Ruta getRuta() {
+        return ruta;
     }
 
-    public void setId_ruta(int id_ruta) {
-        this.id_ruta = id_ruta;
+    public void setRuta(Ruta ruta) {
+        this.ruta = ruta;
     }
 
-    public String getDni_cartero() {
-        return dni_cartero;
+    public Cartero getCartero() {
+        return cartero;
     }
 
-    public void setDni_cartero(String dni_cartero) {
-        this.dni_cartero = dni_cartero;
+    public void setCartero(Cartero cartero) {
+        this.cartero = cartero;
     }
 
-    public String getMatricula() {
-        return matricula;
+    public Coche getCoche() {
+        return coche;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setCoche(Coche coche) {
+        this.coche = coche;
     }
 
     public Date getFecha_reserva() {
