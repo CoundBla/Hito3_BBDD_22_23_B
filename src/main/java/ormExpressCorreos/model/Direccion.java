@@ -3,13 +3,21 @@ package ormExpressCorreos.model;
 // @TODO completar las anotaciones de la clase
 public class Direccion {
 
+    private int id_direccion;
+    private int numero;
+    private String portal;
+    private int piso;
+    private String letra;
+    private int id_calle;
     // @TODO completar las anotaciones de todos los atributos
 
-    public Direccion(Integer numero, Integer piso, String letra, String portal, ...) {  // @TODO: completar
-        // @TODO completar el constructor de la clase.
-        //  Para ello son necesarios dos enteros con el número y el piso, y dos strings
-        // con la letra y el portal
-        //  Cree e inicialice el resto de atributos a los valores que considere oportunos
+
+    public Direccion(int id_direccion, int numero, String portal, String letra, int id_calle) {
+        this.id_direccion = id_direccion;
+        this.numero = numero;
+        this.portal = portal;
+        this.letra = letra;
+        this.id_calle = id_calle;
     }
 
     public Integer getNumero() {
@@ -30,6 +38,6 @@ public class Direccion {
 
     public String getDireccionCompleta() {
         // @TODO completar para que devuelva la dirección completa de un usuario
-        return direccionCompleta;
+        return "";
     }
 }
