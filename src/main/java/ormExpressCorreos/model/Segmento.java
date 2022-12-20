@@ -46,10 +46,6 @@ public class Segmento {
         return id_segmento;
     }
 
-    public void setId_segmento(int id_segmento) {
-        this.id_segmento = id_segmento;
-    }
-
     public int getNum_ini() {
         return num_ini;
     }
