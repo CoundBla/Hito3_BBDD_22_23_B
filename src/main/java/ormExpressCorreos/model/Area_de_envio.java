@@ -1,6 +1,8 @@
 package ormExpressCorreos.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "area_de_envio")
@@ -14,20 +16,19 @@ public class Area_de_envio {
     private Oficina oficina;
     @Column(name = "area_envio_padre", nullable = true)
     private Area_de_envio area_envio_padre;
+    @ManyToMany(mappedBy = "areas_de_envio")
+    private Set<Cartero> carteros;
+    @ManyToMany
 
     public Area_de_envio(){}
-    public Area_de_envio(int id_area_envio, Oficina oficina, Area_de_envio area_envio_padre) {
-        this.id_area_envio = id_area_envio;
+    public Area_de_envio(Oficina oficina, Area_de_envio area_envio_padre) {
         this.oficina = oficina;
         this.area_envio_padre = area_envio_padre;
+        this.carteros= new HashSet<Cartero>();
     }
 
     public int getId_area_envio() {
         return id_area_envio;
-    }
-
-    public void setId_area_envio(int id_area_envio) {
-        this.id_area_envio = id_area_envio;
     }
 
     public Oficina getOficina() {

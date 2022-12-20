@@ -30,8 +30,7 @@ public class Carta {
     private Reparto reparto;
 
     public Carta(){}
-    public Carta(String id_c, String formato, Date fecha_entrega, String comentario, UsuarioGenerico emisor, UsuarioGenerico receptor, Recogida recogida, Reparto reparto) {
-        this.id_c = id_c;
+    public Carta(String formato, Date fecha_entrega, String comentario, UsuarioGenerico emisor, UsuarioGenerico receptor, Recogida recogida, Reparto reparto) {
         this.formato = formato;
         this.fecha_entrega = fecha_entrega;
         this.comentario = comentario;
@@ -45,9 +44,6 @@ public class Carta {
         return id_c;
     }
 
-    public void setId_c(String id_c) {
-        this.id_c = id_c;
-    }
 
     public String getFormato() {
         return formato;

@@ -30,8 +30,7 @@ public class Cartacertificada {
     private Reparto reparto;
 
     public Cartacertificada(){}
-    public Cartacertificada(String id_cf, String urgencia, Date fecha_entrega, String comentario, UsuarioIdentificado emisor, UsuarioIdentificado receptor, Recogida recogida, Reparto reparto) {
-        this.id_cf = id_cf;
+    public Cartacertificada(String urgencia, Date fecha_entrega, String comentario, UsuarioIdentificado emisor, UsuarioIdentificado receptor, Recogida recogida, Reparto reparto) {
         this.urgencia = urgencia;
         this.fecha_entrega = fecha_entrega;
         this.comentario = comentario;
@@ -45,9 +44,6 @@ public class Cartacertificada {
         return id_cf;
     }
 
-    public void setId_cf(String id_cf) {
-        this.id_cf = id_cf;
-    }
 
     public String getUrgencia() {
         return urgencia;

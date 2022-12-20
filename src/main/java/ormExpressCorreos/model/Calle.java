@@ -18,8 +18,7 @@ public class Calle {
     private int longitud;
 
     public Calle(){}
-    public Calle(int id_calle, String nombre_c, Municipio municipio, int longitud) {
-        this.id_calle = id_calle;
+    public Calle(String nombre_c, Municipio municipio, int longitud) {
         this.nombre_c = nombre_c;
         this.municipio = municipio;
         this.longitud = longitud;
@@ -27,10 +26,6 @@ public class Calle {
 
     public int getId_calle() {
         return id_calle;
-    }
-
-    public void setId_calle(int id_calle) {
-        this.id_calle = id_calle;
     }
 
     public String getNombre_c() {
