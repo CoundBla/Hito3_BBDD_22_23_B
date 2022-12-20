@@ -48,9 +48,14 @@ public class Controller {
 
     }
 
-    public UsuarioIdentificado createUsuarioIdentificado(String DNI, String nombre, String apellidos, String email, ...) throws SQLException {
+    public UsuarioIdentificado createUsuarioIdentificado(String DNI, String nombre, String apellidos, String email) throws SQLException {
         // @TODO completa este metodo para crear de forma presistente un usuario identificado
-
+        UsuarioIdentificado ui = new UsuarioIdentificado();
+        ui.setDni(DNI);
+        ui.setNombre(nombre);
+        ui.setApellidos(apellidos);
+        ui.setEmail(email);
+        return ui;
     }
 
     public UsuarioIdentificado createDireccion(Integer numero, Integer piso, String letra, String portal, ...) throws SQLException {
