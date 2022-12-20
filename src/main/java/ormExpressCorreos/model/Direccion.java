@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.HashSet;
 import java.util.Set;
 
 // @TODO completar las anotaciones de la clase
@@ -32,6 +33,18 @@ public class Direccion {
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "calle")
     private Calle calle;
+
+    @OneToMany(mappedBy = "direccion")
+    private Set<UsuarioGenerico> usuariosGenericos;
+
+    @OneToMany(mappedBy = "direccion")
+    private Set<UsuarioIdentificado> usuariosIdentificados;
+
+    @OneToMany(mappedBy = "direccion")
+    private Set<Oficina> oficinas;
+
+    @OneToMany(mappedBy = "direccion")
+    private Set<Recogida> recogidas;
     // @TODO completar las anotaciones de todos los atributos
 
 
@@ -43,6 +56,10 @@ public class Direccion {
         this.portal = portal;
         this.letra = letra;
         this.calle = calle;
+        this.usuariosGenericos = new HashSet<UsuarioGenerico>();
+        this.usuariosIdentificados = new HashSet<UsuarioIdentificado>();
+        this.oficinas = new HashSet<Oficina>();
+        this.recogidas = new HashSet<Recogida>();
     }
 
     public Integer getNumero() {
