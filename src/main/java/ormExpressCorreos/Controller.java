@@ -1,7 +1,6 @@
 package ormExpressCorreos;
 
-import ormExpressCorreos.model.UsuarioGenerico;
-import ormExpressCorreos.model.UsuarioIdentificado;
+import ormExpressCorreos.model.*;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -60,8 +59,18 @@ public class Controller {
         return ui;
     }
 
-    public UsuarioIdentificado createDireccion(Integer numero, Integer piso, String letra, String portal, ...) throws SQLException {
-        // @TODO completa este metodo para crear de forma presistente una direccion
-
+    public UsuarioIdentificado createDireccion(Integer numero, Integer piso, String letra, String portal, String calle, String municipio,
+                                               String provincia, UsuarioIdentificado user) throws SQLException {
+        Direccion objDir = new Direccion();
+        Municipio objMunicipio = new Municipio(municipio,provincia);
+        Calle objCalle = new Calle();
+        objCalle.setNombre_c(calle);
+        objCalle.setMunicipio(objMunicipio);
+        objDir.setCalle(objCalle);
+        objDir.setLetra(letra);
+        objDir.setPiso(piso);
+        objDir.setPortal(portal);
+        user.setDireccion(objDir);
+        return user;
     }
 }

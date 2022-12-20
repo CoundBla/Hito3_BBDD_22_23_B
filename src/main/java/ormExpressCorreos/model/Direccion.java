@@ -48,7 +48,8 @@ public class Direccion {
     // @TODO completar las anotaciones de todos los atributos
 
 
-
+    public Direccion() {
+    }
 
     public Direccion(int numero, String portal, String letra, Calle calle) {
 
@@ -88,5 +89,25 @@ public class Direccion {
 
         direccionCompleta += String.format(", %s",calle.getMunicipio());
         return direccionCompleta;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setPortal(String portal) {
+        this.portal = portal;
+    }
+
+    public void setPiso(int piso) {
+        this.piso = piso;
+    }
+
+    public void setLetra(String letra) {
+        this.letra = letra;
+    }
+
+    public void setCalle(Calle calle) {
+        this.calle = calle;
     }
 }
