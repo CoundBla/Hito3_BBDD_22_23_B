@@ -1,9 +1,8 @@
 package ormExpressCorreos.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "centro_de_clasificacion")
@@ -17,10 +16,14 @@ public class Coche {
     @Column(name = "")
     private int id_oficina;
 
+    @OneToMany(mappedBy = "coche")
+    private Set<Reparto> repartos;
+
     public Coche(String matricula, float capacidad, int id_oficina) {
         this.matricula = matricula;
         this.capacidad = capacidad;
         this.id_oficina = id_oficina;
+        this.repartos = new HashSet<Reparto>();
     }
 
     public Coche() {
@@ -48,5 +51,9 @@ public class Coche {
 
     public void setId_oficina(int id_oficina) {
         this.id_oficina = id_oficina;
+    }
+
+    public Set<Reparto> getRepartos() {
+        return repartos;
     }
 }
