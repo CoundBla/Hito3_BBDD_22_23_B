@@ -37,7 +37,7 @@ public class Direccion {
 
 
 
-    public Direccion( int numero, String portal, String letra, Calle calle) {
+    public Direccion(int numero, String portal, String letra, Calle calle) {
 
         this.numero = numero;
         this.portal = portal;

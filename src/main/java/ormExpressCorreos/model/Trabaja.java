@@ -3,7 +3,9 @@ package ormExpressCorreos.model;
 import javax.persistence.*;
 import java.util.Date;
 
+/*
 @Entity
+
 @Table(name = "trabaja")
 public class Trabaja {
 
@@ -63,3 +65,4 @@ public class Trabaja {
         this.cartero = cartero;
     }
 }
+ */

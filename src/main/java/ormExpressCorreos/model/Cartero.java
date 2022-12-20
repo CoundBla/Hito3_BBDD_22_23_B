@@ -22,18 +22,18 @@ public class Cartero {
     private String apellidos;
     @ManyToMany()
     @JoinTable(name = "asociado")
+    private Set<Area_de_envio> areas_de_envio;
 
     @OneToMany(mappedBy = "cartero")
     private Set<Reparto> repartos;
 
-    @ManyToMany(mappedBy = "cartero")
+    @ManyToMany()
     @JoinTable(name = "trabaja")
     private Set<Turno> turnos;
 
     @ManyToMany(mappedBy = "cartero")
     private Set<Oficina> oficina;
 
-    private Set<Area_de_envio> areas_de_envio;
     public Cartero(){}
     public Cartero(String DNI, String nombre, String apellidos) {
         this.DNI = DNI;

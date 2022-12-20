@@ -30,6 +30,10 @@ public class UsuarioGenerico {
     private Set<Carta> enviadas;
     @OneToMany(mappedBy =  "usuarioGenerico")
     private Set<Carta> recibidas;
+    @OneToMany(mappedBy =  "usuarioGenerico")
+    private Set<Paquete> enviados;
+    @OneToMany(mappedBy =  "usuarioGenerico")
+    private Set<Paquete> recibidos;
     public UsuarioGenerico(){}
 
     public UsuarioGenerico(String nombre, String apellidos, Direccion direccion) {
@@ -38,6 +42,8 @@ public class UsuarioGenerico {
         this.direccion = direccion;
         this.enviadas = new HashSet<Carta>();
         this.recibidas = new HashSet<Carta>();
+        this.enviados = new HashSet<Paquete>();
+        this.recibidos = new HashSet<Paquete>();
     }
 
     public Long getId() {

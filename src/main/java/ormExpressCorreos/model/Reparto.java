@@ -1,6 +1,7 @@
 package ormExpressCorreos.model;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -56,6 +57,9 @@ public class Reparto {
         this.cartero = cartero;
         this.coche = coche;
         this.fecha_reserva = fecha_reserva;
+        this.paquetes = new HashSet<Paquete>();
+        this.cartas = new HashSet<Carta>();
+        this.cartascertificadas = new HashSet<Cartacertificada>();
     }
 
     public int getId_reparto() {

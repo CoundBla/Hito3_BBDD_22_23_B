@@ -2,7 +2,8 @@ package ormExpressCorreos.model;
 
 import javax.persistence.*;
 
-@Entity
+
+/*@Entity
 @Table(name = "agrupan")
 public class Agrupan {
     @Column(name = "segmento", nullable = false)
@@ -33,3 +34,4 @@ public class Agrupan {
     }
 
 }
+*/

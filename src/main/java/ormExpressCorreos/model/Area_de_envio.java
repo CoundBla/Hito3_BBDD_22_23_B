@@ -49,4 +49,5 @@ public class Area_de_envio {
     public void setArea_envio_padre(Area_de_envio area_envio_padre) {
         this.area_envio_padre = area_envio_padre;
     }
+
 }

@@ -4,7 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/*
 @Entity
+
 @Table(name = "asociado")
 public class Asociado {
     @Column(name = "area_de_envio", nullable = false)
@@ -34,3 +36,4 @@ public class Asociado {
         this.cartero = cartero;
     }
 }
+*/

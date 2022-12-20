@@ -20,14 +20,17 @@ public class Calle {
     private int longitud;
 
     @OneToMany(mappedBy = "calle")
-    private Set<Segmento> segmento;
+    private Set<Segmento> segmentos;
+    @OneToMany(mappedBy = "calle")
+    private Set<Direccion> direcciones;
 
     public Calle(){}
     public Calle(String nombre_c, Municipio municipio, int longitud) {
         this.nombre_c = nombre_c;
         this.municipio = municipio;
         this.longitud = longitud;
-        this.segmento = new HashSet<Segmento>();
+        this.segmentos = new HashSet<Segmento>();
+        this.direcciones = new HashSet<Direccion>();
     }
 
     public int getId_calle() {
@@ -59,6 +62,6 @@ public class Calle {
     }
 
     public Set<Segmento> getSegmento() {
-        return segmento;
+        return segmentos;
     }
 }

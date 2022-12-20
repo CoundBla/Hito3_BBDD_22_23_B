@@ -36,4 +36,8 @@ public class Municipio {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
+
+    public Set<Calle> getCalles() {
+        return calles;
+    }
 }
