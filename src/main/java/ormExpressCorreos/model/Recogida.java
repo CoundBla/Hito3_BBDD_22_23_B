@@ -1,6 +1,7 @@
 package ormExpressCorreos.model;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -41,6 +42,9 @@ public class Recogida {
         this.fecha_recogida = fecha_recogida;
         this.direccion = direccion;
         this.cartero = cartero;
+        this.paquetes = new HashSet<Paquete>();
+        this.cartas = new HashSet<Carta>();
+        this.cartascertificadas = new HashSet<Cartacertificada>();
     }
 
     public int getId_recogida() {
