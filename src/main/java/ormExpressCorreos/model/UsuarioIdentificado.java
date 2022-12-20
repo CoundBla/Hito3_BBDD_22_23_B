@@ -5,7 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 // @TODO completar las anotaciones de la clase
-public class UsuarioIdentificado {
+@Entity
+@Table(name = "UsuarioIdentificado")
+class UsuarioIdentificado {
     
     // @TODO completar las anotaciones de todos los atributos
 

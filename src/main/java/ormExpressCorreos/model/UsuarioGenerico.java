@@ -6,7 +6,7 @@ import java.util.Set;
 
 // @TODO completar las anotaciones de la clase
 @Entity
-@Table(name = "segmento")
+@Table(name = "UsuarioGenerico")
 public class UsuarioGenerico {
     
     // @TODO completar las anotaciones de todos los atributos
@@ -32,8 +32,7 @@ public class UsuarioGenerico {
     private Set<Carta> recibidas;
     public UsuarioGenerico(){}
 
-    public UsuarioGenerico(Long id, String nombre, String apellidos, Direccion direccion) {
-        this.id = id;
+    public UsuarioGenerico(String nombre, String apellidos, Direccion direccion) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.direccion = direccion;
@@ -45,9 +44,6 @@ public class UsuarioGenerico {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
