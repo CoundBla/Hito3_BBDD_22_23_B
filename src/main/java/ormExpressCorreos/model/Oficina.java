@@ -2,12 +2,14 @@ package ormExpressCorreos.model;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 @Entity
 @Table(name = "oficina")
 public class Oficina {
 
     @Id
+    @GeneratedValue
     @Column(name = "id_oficina")
     private int id_oficina;
 
@@ -25,20 +27,17 @@ public class Oficina {
     @OneToMany(mappedBy = "oficina")
     private Set<Area_de_envio> areas_de_envio;
 
-    public Oficina(int id_oficina, String nombre_oficina, Municipio municipio, Direccion direccion) {
-        this.id_oficina = id_oficina;
+    public Oficina(String nombre_oficina, Municipio municipio, Direccion direccion) {
         this.nombre_oficina = nombre_oficina;
         this.municipio = municipio;
         this.direccion = direccion;
+        this.areas_de_envio = new HashSet<Area_de_envio>();
     }
 
     public int getId_oficina() {
         return id_oficina;
     }
 
-    public void setId_oficina(int id_oficina) {
-        this.id_oficina = id_oficina;
-    }
 
     public String getNombre_oficina() {
         return nombre_oficina;
@@ -62,5 +61,9 @@ public class Oficina {
 
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
+    }
+
+    public Set<Area_de_envio> getAreas_de_envio() {
+        return areas_de_envio;
     }
 }

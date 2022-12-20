@@ -16,9 +16,13 @@ public class Ruta {
     @OneToMany(mappedBy = "ruta")
     private Set<Reparto> repartos;
 
+    @OneToMany(mappedBy = "ruta")
+    private Set<Segmento> segmentos;
+
 
     public Ruta() {
         this.repartos = new HashSet<Reparto>();
+        this.segmentos = new HashSet<Segmento>();
     }
 
     public int getId_ruta() {
@@ -30,4 +34,7 @@ public class Ruta {
         return repartos;
     }
 
+    public Set<Segmento> getSegmentos() {
+        return segmentos;
+    }
 }

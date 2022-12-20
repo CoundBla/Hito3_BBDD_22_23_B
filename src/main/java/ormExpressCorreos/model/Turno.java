@@ -20,8 +20,7 @@ public class Turno {
     @Column(name = "tipo_turno",nullable = false)
     private String tipo_turno;
 
-    public Turno(int id_turno, String hora_entrada, String hora_salida, String tipo_turno) {
-        this.id_turno = id_turno;
+    public Turno(String hora_entrada, String hora_salida, String tipo_turno) {
         this.hora_entrada = hora_entrada;
         this.hora_salida = hora_salida;
         this.tipo_turno = tipo_turno;
@@ -29,10 +28,6 @@ public class Turno {
 
     public int getId_turno() {
         return id_turno;
-    }
-
-    public void setId_turno(int id_turno) {
-        this.id_turno = id_turno;
     }
 
     public String getHora_entrada() {
