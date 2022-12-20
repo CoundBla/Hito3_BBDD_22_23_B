@@ -27,11 +27,21 @@ public class Oficina {
     @OneToMany(mappedBy = "oficina")
     private Set<Area_de_envio> areas_de_envio;
 
+    @ManyToMany(mappedBy = "oficina")
+    @JoinTable(name = "trabaja")
+    private Set<Turno> turnos;
+
+    @ManyToMany(mappedBy = "oficina")
+    @JoinTable(name = "trabaja")
+    private Set<Cartero> carteros;
+
     public Oficina(String nombre_oficina, Municipio municipio, Direccion direccion) {
         this.nombre_oficina = nombre_oficina;
         this.municipio = municipio;
         this.direccion = direccion;
         this.areas_de_envio = new HashSet<Area_de_envio>();
+        this.turnos = new HashSet<Turno>();
+        this.carteros = new HashSet<Cartero>();
     }
 
     public int getId_oficina() {
@@ -65,5 +75,13 @@ public class Oficina {
 
     public Set<Area_de_envio> getAreas_de_envio() {
         return areas_de_envio;
+    }
+
+    public Set<Turno> getTurnos() {
+        return turnos;
+    }
+
+    public Set<Cartero> getCarteros() {
+        return carteros;
     }
 }

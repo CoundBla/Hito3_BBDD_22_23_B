@@ -26,6 +26,13 @@ public class Cartero {
     @OneToMany(mappedBy = "cartero")
     private Set<Reparto> repartos;
 
+    @ManyToMany(mappedBy = "cartero")
+    @JoinTable(name = "trabaja")
+    private Set<Turno> turnos;
+
+    @ManyToMany(mappedBy = "cartero")
+    private Set<Oficina> oficina;
+
     private Set<Area_de_envio> areas_de_envio;
     public Cartero(){}
     public Cartero(String DNI, String nombre, String apellidos) {
@@ -34,6 +41,8 @@ public class Cartero {
         this.apellidos = apellidos;
         this.repartos = new HashSet<Reparto>();
         this.areas_de_envio= new HashSet<Area_de_envio>();
+        this.turnos= new HashSet<Turno>();
+        this.oficina= new HashSet<Oficina>();
     }
 
     public String getDNI() {
@@ -50,5 +59,17 @@ public class Cartero {
 
     public Set<Reparto> getRepartos() {
         return repartos;
+    }
+
+    public Set<Turno> getTurnos() {
+        return turnos;
+    }
+
+    public Set<Oficina> getOficina() {
+        return oficina;
+    }
+
+    public Set<Area_de_envio> getAreas_de_envio() {
+        return areas_de_envio;
     }
 }

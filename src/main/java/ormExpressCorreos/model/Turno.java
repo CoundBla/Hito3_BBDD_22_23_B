@@ -1,6 +1,8 @@
 package ormExpressCorreos.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "turno")
@@ -20,10 +22,18 @@ public class Turno {
     @Column(name = "tipo_turno",nullable = false)
     private String tipo_turno;
 
+    @ManyToMany(mappedBy = "turno")
+    private Set<Oficina> oficinas;
+
+    @ManyToMany(mappedBy = "turno")
+    private Set<Cartero> carteros;
+
     public Turno(String hora_entrada, String hora_salida, String tipo_turno) {
         this.hora_entrada = hora_entrada;
         this.hora_salida = hora_salida;
         this.tipo_turno = tipo_turno;
+        this.oficinas= new HashSet<Oficina>();
+        this.carteros= new HashSet<Cartero>();
     }
 
     public int getId_turno() {
@@ -53,4 +63,13 @@ public class Turno {
     public void setTipo_turno(String tipo_turno) {
         this.tipo_turno = tipo_turno;
     }
+
+    public Set<Oficina> getOficinas() {
+        return oficinas;
+    }
+
+    public Set<Cartero> getCarteros() {
+        return carteros;
+    }
 }
+
