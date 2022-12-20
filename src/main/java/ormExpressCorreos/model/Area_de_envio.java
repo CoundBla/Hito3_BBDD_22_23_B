@@ -18,13 +18,16 @@ public class Area_de_envio {
     private Area_de_envio area_envio_padre;
     @ManyToMany(mappedBy = "areas_de_envio")
     private Set<Cartero> carteros;
-    @ManyToMany
+    @ManyToMany()
+    @JoinTable(name= "agrupan")
+    private Set<Segmento> segmentos;
 
     public Area_de_envio(){}
     public Area_de_envio(Oficina oficina, Area_de_envio area_envio_padre) {
         this.oficina = oficina;
         this.area_envio_padre = area_envio_padre;
         this.carteros= new HashSet<Cartero>();
+        this.segmentos = new HashSet<Segmento>();
     }
 
     public int getId_area_envio() {
