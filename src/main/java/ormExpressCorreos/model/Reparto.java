@@ -36,6 +36,15 @@ public class Reparto {
     @Column(name = "fecha_reserva")
     private Date fecha_reserva;
 
+    @OneToMany(mappedBy = "reparto",cascade = CascadeType.ALL)
+    private Set<Paquete> paquetes;
+
+    @OneToMany(mappedBy = "reparto",cascade = CascadeType.ALL)
+    private Set<Carta> cartas;
+
+    @OneToMany(mappedBy = "reparto",cascade = CascadeType.ALL)
+    private Set<Cartacertificada> cartascertificadas;
+
     public Reparto(){}
 
     public Reparto(Date fecha_alta, int num_cartas, int peso, Ruta ruta, Cartero cartero, Coche coche, Date fecha_reserva) {
