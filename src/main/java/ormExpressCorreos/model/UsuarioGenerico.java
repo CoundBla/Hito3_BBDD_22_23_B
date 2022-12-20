@@ -36,10 +36,9 @@ public class UsuarioGenerico {
     private Set<Paquete> recibidos;
     public UsuarioGenerico(){}
 
-    public UsuarioGenerico(String nombre, String apellidos, Direccion direccion) {
+    public UsuarioGenerico(String nombre, String apellidos) {
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.direccion = direccion;
         this.enviadas = new HashSet<Carta>();
         this.recibidas = new HashSet<Carta>();
         this.enviados = new HashSet<Paquete>();

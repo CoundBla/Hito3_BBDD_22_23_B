@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
 import java.sql.*;
 
 /**
@@ -43,8 +42,11 @@ public class Controller {
      * @return el nuevo usuario creado
      * @throws SQLException
      */
-    public UsuarioGenerico createUsuarioGenerico(Long id, String nombre, String apellidos, ...) throws SQLException{
-        // @TODO completa este metodo para crear de forma presistente un usuario genérico
+    public UsuarioGenerico createUsuarioGenerico(String nombre, String apellidos) throws SQLException{
+        UsuarioGenerico nuevoUG = new UsuarioGenerico();
+        nuevoUG.setNombre(nombre);
+        nuevoUG.setApellidos(apellidos);
+        return nuevoUG;
 
     }
 
