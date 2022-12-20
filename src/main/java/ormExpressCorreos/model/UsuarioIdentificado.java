@@ -12,9 +12,8 @@ public class UsuarioIdentificado {
     // @TODO completar las anotaciones de todos los atributos
 
     @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "dni", nullable = false)
+    private String dni;
 
     @Column(name = "nombre")
     private String nombre;
@@ -29,9 +28,6 @@ public class UsuarioIdentificado {
     @JoinColumn(name = "direccion")
     private Direccion direccion;
 
-    @Column(name = "dni", nullable = false)
-    private String dni;
-
     @Column(name = "email", nullable = false)
     private String email;
 
@@ -43,24 +39,18 @@ public class UsuarioIdentificado {
 
     public UsuarioIdentificado(){}
 
-    public UsuarioIdentificado(String nombre, String apellidos, UsuarioIdentificado usuarioIdentificado, Direccion direccion, String dni, String email) {
+    public UsuarioIdentificado( String dni, String nombre, String apellidos, UsuarioIdentificado usuarioIdentificado, Direccion direccion, String email) {
+        this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.usuarioIdentificado = usuarioIdentificado;
         this.direccion = direccion;
-        this.dni = dni;
         this.email = email;
         this.enviadas = new HashSet<Cartacertificada>();
         this.recibidas = new HashSet<Cartacertificada>();
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
