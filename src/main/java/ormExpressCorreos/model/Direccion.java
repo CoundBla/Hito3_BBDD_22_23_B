@@ -63,6 +63,13 @@ public class Direccion {
 
     public String getDireccionCompleta() {
         // @TODO completar para que devuelva la dirección completa de un usuario
-        return "";
+        String direccionCompleta = String.format("%s, %d",calle.getNombre_c(),numero);
+        if(portal != null)
+            direccionCompleta += String.format(", %s",portal);
+        if(letra != null)
+            direccionCompleta += String.format(", %s",letra);
+
+        direccionCompleta += String.format(", %s",calle.getMunicipio());
+        return direccionCompleta;
     }
 }
