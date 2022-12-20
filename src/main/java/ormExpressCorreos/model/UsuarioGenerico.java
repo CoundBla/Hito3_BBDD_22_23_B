@@ -26,6 +26,10 @@ public class UsuarioGenerico {
     @JoinColumn(name = "direccion")
     private Direccion direccion;
 
+    @OneToMany(mappedBy =  "usuarioGenerico")
+    private Set<Carta> enviadas;
+    @OneToMany(mappedBy =  "usuarioGenerico")
+    private Set<Carta> recibidas;
     public UsuarioGenerico(){}
 
     public UsuarioGenerico(Long id, String nombre, String apellidos, Direccion direccion) {
@@ -33,6 +37,8 @@ public class UsuarioGenerico {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.direccion = direccion;
+        this.enviadas = new HashSet<Carta>();
+        this.recibidas = new HashSet<Carta>();
     }
 
     public Long getId() {
