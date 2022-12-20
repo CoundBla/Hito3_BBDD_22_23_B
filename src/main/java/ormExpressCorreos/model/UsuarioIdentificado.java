@@ -1,6 +1,8 @@
 package ormExpressCorreos.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 // @TODO completar las anotaciones de la clase
 public class UsuarioIdentificado {
@@ -31,17 +33,23 @@ public class UsuarioIdentificado {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @OneToMany(mappedBy = "usuarioidentificado",cascade = CascadeType.ALL)
+    private Set<Cartacertificada> recibidas;
+
+    @OneToMany(mappedBy = "usuarioidentificado",cascade = CascadeType.ALL)
+    private Set<Cartacertificada> enviadas;
 
     public UsuarioIdentificado(){}
 
-    public UsuarioIdentificado(Long id, String nombre, String apellidos, UsuarioIdentificado usuarioIdentificado, Direccion direccion, String dni, String email) {
-        this.id = id;
+    public UsuarioIdentificado(String nombre, String apellidos, UsuarioIdentificado usuarioIdentificado, Direccion direccion, String dni, String email) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.usuarioIdentificado = usuarioIdentificado;
         this.direccion = direccion;
         this.dni = dni;
         this.email = email;
+        this.enviadas = new HashSet<Cartacertificada>();
+        this.recibidas = new HashSet<Cartacertificada>();
     }
 
     public Long getId() {
