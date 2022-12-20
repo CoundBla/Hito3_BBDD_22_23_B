@@ -21,20 +21,26 @@ public class UsuarioIdentificado {
     @Column(name = "apellidos")
     private String apellidos;
 
-    @Column(name = "autoriza")
-    private UsuarioIdentificado usuarioIdentificado;
+    @ManyToOne()
+    @JoinColumn(name = "usuarioAutorizado")
+    private UsuarioIdentificado usuarioAutorizado;
 
-    @ManyToOne(optional = false)
+    @OneToMany(mappedBy = "usuarioAutorizado")
+    private Set<UsuarioIdentificado> autoriza_hijo;
+
+
+
+    @ManyToOne()
     @JoinColumn(name = "direccion")
     private Direccion direccion;
 
     @Column(name = "email", nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "usuarioidentificado",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "emisor",cascade = CascadeType.ALL)
     private Set<Cartacertificada> recibidas;
 
-    @OneToMany(mappedBy = "usuarioidentificado",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "receptor",cascade = CascadeType.ALL)
     private Set<Cartacertificada> enviadas;
 
     public UsuarioIdentificado(){}
@@ -43,7 +49,6 @@ public class UsuarioIdentificado {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.usuarioIdentificado = usuarioIdentificado;
         this.direccion = direccion;
         this.email = email;
         this.enviadas = new HashSet<Cartacertificada>();
@@ -68,13 +73,6 @@ public class UsuarioIdentificado {
         this.apellidos = apellidos;
     }
 
-    public UsuarioIdentificado getUsuarioIdentificado() {
-        return usuarioIdentificado;
-    }
-
-    public void setUsuarioIdentificado(UsuarioIdentificado usuarioIdentificado) {
-        this.usuarioIdentificado = usuarioIdentificado;
-    }
 
     public Direccion getDireccion() {
         return direccion;

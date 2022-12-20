@@ -31,7 +31,7 @@ public class Cartero {
     @JoinTable(name = "trabaja")
     private Set<Turno> turnos;
 
-    @ManyToMany(mappedBy = "cartero")
+    @ManyToMany(mappedBy = "carteros")
     private Set<Oficina> oficina;
 
     public Cartero(){}

@@ -43,6 +43,9 @@ public class Controller {
      */
     public UsuarioGenerico createUsuarioGenerico(String nombre, String apellidos) throws SQLException{
         UsuarioGenerico nuevoUG = new UsuarioGenerico(nombre, apellidos);
+        session.beginTransaction();
+        session.saveOrUpdate(nuevoUG);
+        session.getTransaction().commit();
         return nuevoUG;
     }
 
@@ -53,6 +56,9 @@ public class Controller {
         ui.setNombre(nombre);
         ui.setApellidos(apellidos);
         ui.setEmail(email);
+        session.beginTransaction();
+        session.saveOrUpdate(ui);
+        session.getTransaction().commit();
         return ui;
     }
 
@@ -68,6 +74,14 @@ public class Controller {
         objDir.setPiso(piso);
         objDir.setPortal(portal);
         user.setDireccion(objDir);
+        session.beginTransaction();
+        session.saveOrUpdate(objMunicipio);
+        session.saveOrUpdate(objCalle);
+        session.saveOrUpdate(objDir);
+        session.saveOrUpdate(user);
+        session.getTransaction().commit();
         return user;
     }
+
+
 }

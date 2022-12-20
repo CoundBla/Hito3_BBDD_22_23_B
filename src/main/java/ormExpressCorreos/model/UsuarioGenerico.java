@@ -22,17 +22,17 @@ public class UsuarioGenerico {
     @Column(name = "apellidos")
     private String apellidos;
 
-    @ManyToOne(optional = false)
+    @ManyToOne()
     @JoinColumn(name = "direccion")
     private Direccion direccion;
 
-    @OneToMany(mappedBy =  "usuarioGenerico")
+    @OneToMany(mappedBy =  "emisor")
     private Set<Carta> enviadas;
-    @OneToMany(mappedBy =  "usuarioGenerico")
+    @OneToMany(mappedBy =  "receptor")
     private Set<Carta> recibidas;
-    @OneToMany(mappedBy =  "usuarioGenerico")
+    @OneToMany(mappedBy =  "emisor")
     private Set<Paquete> enviados;
-    @OneToMany(mappedBy =  "usuarioGenerico")
+    @OneToMany(mappedBy =  "receptor")
     private Set<Paquete> recibidos;
     public UsuarioGenerico(){}
 

@@ -14,8 +14,11 @@ public class Area_de_envio {
     @ManyToOne(optional = false)
     @JoinColumn(name = "oficina")
     private Oficina oficina;
-    @Column(name = "area_envio_padre", nullable = true)
-    private Area_de_envio area_envio_padre;
+    @ManyToOne()
+    @JoinColumn(name = "area_envio_padre")
+    private Area_de_envio area_envio_padre;;
+    @OneToMany(mappedBy = "area_envio_padre")
+    private Set<Area_de_envio> area_envio_hijo;
     @ManyToMany(mappedBy = "areas_de_envio")
     private Set<Cartero> carteros;
     @ManyToMany()

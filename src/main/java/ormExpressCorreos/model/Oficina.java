@@ -34,6 +34,7 @@ public class Oficina {
     @ManyToMany()
     @JoinTable(name = "trabaja")
     private Set<Cartero> carteros;
+
     @OneToMany(mappedBy = "oficina")
     private Set<Centro_de_clasificacion> centros_de_clasificacion;
 

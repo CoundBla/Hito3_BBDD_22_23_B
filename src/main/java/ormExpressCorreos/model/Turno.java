@@ -22,10 +22,10 @@ public class Turno {
     @Column(name = "tipo_turno",nullable = false)
     private String tipo_turno;
 
-    @ManyToMany(mappedBy = "turno")
+    @ManyToMany(mappedBy = "turnos")
     private Set<Oficina> oficinas;
 
-    @ManyToMany(mappedBy = "turno")
+    @ManyToMany(mappedBy = "turnos")
     private Set<Cartero> carteros;
 
     public Turno(String hora_entrada, String hora_salida, String tipo_turno) {
