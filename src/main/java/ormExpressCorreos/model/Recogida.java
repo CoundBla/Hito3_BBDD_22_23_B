@@ -1,35 +1,58 @@
 package ormExpressCorreos.model;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
+@Entity
+@Table(name = "recogida")
 public class Recogida {
+    @Id
+    @GeneratedValue
+    @Column(name = "id_recogida")
     private int id_recogida;
-    private int id_usuario;
-    private Date fecha_recogida;
-    private int id_direccion;
-    private String dni_cartero;
 
-    public Recogida(int id_recogida, int id_usuario, Date fecha_recogida, int id_direccion, String dni_cartero) {
-        this.id_recogida = id_recogida;
-        this.id_usuario = id_usuario;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario")
+    private UsuarioIdentificado usuario;
+
+    @Column(name = "fecha_recogida")
+    private Date fecha_recogida;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "direccion")
+    private Direccion direccion;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cartero")
+    private Cartero cartero;
+
+    @OneToMany(mappedBy = "recogida",cascade = CascadeType.ALL)
+    private Set<Paquete> paquetes;
+
+    @OneToMany(mappedBy = "recogida",cascade = CascadeType.ALL)
+    private Set<Carta> cartas;
+
+    @OneToMany(mappedBy = "recogida",cascade = CascadeType.ALL)
+    private Set<Cartacertificada> cartascertificadas;
+
+
+    public Recogida(UsuarioIdentificado usuario, Date fecha_recogida, Direccion direccion, Cartero cartero) {
+        this.usuario = usuario;
         this.fecha_recogida = fecha_recogida;
-        this.id_direccion = id_direccion;
-        this.dni_cartero = dni_cartero;
+        this.direccion = direccion;
+        this.cartero = cartero;
     }
 
     public int getId_recogida() {
         return id_recogida;
     }
 
-    public void setId_recogida(int id_recogida) {
-        this.id_recogida = id_recogida;
+    public UsuarioIdentificado getUsuario() {
+        return usuario;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
-    }
-
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setUsuario(UsuarioIdentificado usuario) {
+        this.usuario = usuario;
     }
 
     public Date getFecha_recogida() {
@@ -40,19 +63,19 @@ public class Recogida {
         this.fecha_recogida = fecha_recogida;
     }
 
-    public int getId_direccion() {
-        return id_direccion;
+    public Direccion getDireccion() {
+        return direccion;
     }
 
-    public void setId_direccion(int id_direccion) {
-        this.id_direccion = id_direccion;
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
     }
 
-    public String getDni_cartero() {
-        return dni_cartero;
+    public Cartero getCartero() {
+        return cartero;
     }
 
-    public void setDni_cartero(String dni_cartero) {
-        this.dni_cartero = dni_cartero;
+    public void setCartero(Cartero cartero) {
+        this.cartero = cartero;
     }
 }

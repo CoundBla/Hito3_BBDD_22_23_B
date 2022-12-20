@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.Set;
 
 // @TODO completar las anotaciones de la clase
 @Entity
@@ -32,6 +33,8 @@ public class Direccion {
     @JoinColumn(name = "calle")
     private Calle calle;
     // @TODO completar las anotaciones de todos los atributos
+
+
 
 
     public Direccion( int numero, String portal, String letra, Calle calle) {

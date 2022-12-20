@@ -34,11 +34,11 @@ public class Paquete {
     private UsuarioGenerico receptor;
 
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "direccion")
+    @JoinColumn(name = "recogida")
     private Recogida recogida;
 
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "direccion")
+    @JoinColumn(name = "reparto")
     private Reparto reparto;
 
     @Column(name = "fecha_entrega")
