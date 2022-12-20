@@ -7,7 +7,7 @@ import java.util.Set;
 // @TODO completar las anotaciones de la clase
 @Entity
 @Table(name = "UsuarioIdentificado")
-class UsuarioIdentificado {
+public class UsuarioIdentificado {
     
     // @TODO completar las anotaciones de todos los atributos
 
