@@ -22,12 +22,17 @@ public class Cartero {
     private String apellidos;
     @ManyToMany()
     @JoinTable(name = "asociado")
+
+    @OneToMany(mappedBy = "ruta")
+    private Set<Reparto> repartos;
+
     private Set<Area_de_envio> areas_de_envio;
     public Cartero(){}
     public Cartero(String DNI, String nombre, String apellidos) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.repartos = new HashSet<Reparto>();
         this.areas_de_envio= new HashSet<Area_de_envio>();
     }
 
@@ -41,5 +46,9 @@ public class Cartero {
 
     public String getApellidos() {
         return this.apellidos;
+    }
+
+    public Set<Reparto> getRepartos() {
+        return repartos;
     }
 }

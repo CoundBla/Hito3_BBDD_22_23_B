@@ -1,6 +1,7 @@
 package ormExpressCorreos.model;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "reparto")
@@ -37,8 +38,8 @@ public class Reparto {
 
     public Reparto(){}
 
-    public Reparto(int id_reparto, Date fecha_alta, int num_cartas, int peso, Ruta ruta, Cartero cartero, Coche coche, Date fecha_reserva) {
-        this.id_reparto = id_reparto;
+    public Reparto(Date fecha_alta, int num_cartas, int peso, Ruta ruta, Cartero cartero, Coche coche, Date fecha_reserva) {
+
         this.fecha_alta = fecha_alta;
         this.num_cartas = num_cartas;
         this.peso = peso;
@@ -50,10 +51,6 @@ public class Reparto {
 
     public int getId_reparto() {
         return id_reparto;
-    }
-
-    public void setId_reparto(int id_reparto) {
-        this.id_reparto = id_reparto;
     }
 
     public Date getFecha_alta() {

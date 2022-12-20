@@ -1,6 +1,8 @@
 package ormExpressCorreos.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "ruta")
@@ -11,17 +13,21 @@ public class Ruta {
     @Column(name = "id_ruta")
     private int id_ruta;
 
-    public Ruta(){}
+    @OneToMany(mappedBy = "ruta")
+    private Set<Reparto> repartos;
 
-    public Ruta(int id_ruta) {
-        this.id_ruta = id_ruta;
+
+    public Ruta() {
+        this.repartos = new HashSet<Reparto>();
     }
 
     public int getId_ruta() {
         return id_ruta;
     }
 
-    public void setId_ruta(int id_ruta) {
-        this.id_ruta = id_ruta;
+
+    public Set<Reparto> getRepartos() {
+        return repartos;
     }
+
 }
