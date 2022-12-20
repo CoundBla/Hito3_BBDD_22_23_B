@@ -1,27 +1,36 @@
 package ormExpressCorreos.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "asociado")
 public class Asociado {
-    private int id_area_envio;
-    private String dni_cartero;
+    @Column(name = "area_de_envio", nullable = false)
+    private Area_de_envio area_de_envio;
+    @Column(name = "cartero", nullable = false)
+    private Cartero cartero;
 
-    public Asociado(int id_area_envio, String dni_cartero) {
-        this.id_area_envio = id_area_envio;
-        this.dni_cartero = dni_cartero;
+    public Asociado(){}
+    public Asociado(Area_de_envio area_de_envio, Cartero cartero) {
+        this.area_de_envio = area_de_envio;
+        this.cartero = cartero;
     }
 
-    public int getId_area_envio() {
-        return id_area_envio;
+    public Area_de_envio getArea_de_envio() {
+        return area_de_envio;
     }
 
-    public void setId_area_envio(int id_area_envio) {
-        this.id_area_envio = id_area_envio;
+    public void setArea_de_envio(Area_de_envio area_de_envio) {
+        this.area_de_envio = area_de_envio;
     }
 
-    public String getDni_cartero() {
-        return dni_cartero;
+    public Cartero getCartero() {
+        return cartero;
     }
 
-    public void setDni_cartero(String dni_cartero) {
-        this.dni_cartero = dni_cartero;
+    public void setCartero(Cartero cartero) {
+        this.cartero = cartero;
     }
 }

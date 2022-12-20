@@ -1,26 +1,44 @@
 package ormExpressCorreos.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "carta")
 public class Carta {
+    @Id
+    @GeneratedValue
+    @Column(name = "id_c")
     private String id_c;
+    @Column(name = "formato",nullable = false)
     private String formato;
+    @Column(name = "fecha_entrega",nullable = true)
     private Date fecha_entrega;
-    private String nombre_m;
-    private int emisor_id;
-    private int receptor_id;
-    private int id_recogida;
-    private int id_reparto;
+    @Column(name = "comentario",nullable = true)
+    private String comentario;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "emisor")
+    private UsuarioGenerico emisor;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "receptor")
+    private UsuarioGenerico receptor;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "recogida")
+    private Recogida recogida;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "reparto")
+    private Reparto reparto;
 
-    public Carta(String id_c, String formato, Date fecha_entrega, String nombre_m, int emisor_id, int receptor_id, int id_recogida, int id_reparto) {
+    public Carta(){}
+    public Carta(String id_c, String formato, Date fecha_entrega, String comentario, UsuarioGenerico emisor, UsuarioGenerico receptor, Recogida recogida, Reparto reparto) {
         this.id_c = id_c;
         this.formato = formato;
         this.fecha_entrega = fecha_entrega;
-        this.nombre_m = nombre_m;
-        this.emisor_id = emisor_id;
-        this.receptor_id = receptor_id;
-        this.id_recogida = id_recogida;
-        this.id_reparto = id_reparto;
+        this.comentario = comentario;
+        this.emisor = emisor;
+        this.receptor = receptor;
+        this.recogida = recogida;
+        this.reparto = reparto;
     }
 
     public String getId_c() {
@@ -47,43 +65,39 @@ public class Carta {
         this.fecha_entrega = fecha_entrega;
     }
 
-    public String getNombre_m() {
-        return nombre_m;
+    public String getComentario() {
+        return comentario;
     }
 
-    public void setNombre_m(String nombre_m) {
-        this.nombre_m = nombre_m;
+    public UsuarioGenerico getEmisor() {
+        return emisor;
     }
 
-    public int getEmisor_id() {
-        return emisor_id;
+    public void setEmisor(UsuarioGenerico emisor) {
+        this.emisor = emisor;
     }
 
-    public void setEmisor_id(int emisor_id) {
-        this.emisor_id = emisor_id;
+    public UsuarioGenerico getReceptor() {
+        return receptor;
     }
 
-    public int getReceptor_id() {
-        return receptor_id;
+    public void setReceptor(UsuarioGenerico receptor) {
+        this.receptor = receptor;
     }
 
-    public void setReceptor_id(int receptor_id) {
-        this.receptor_id = receptor_id;
+    public Recogida getRecogida() {
+        return recogida;
     }
 
-    public int getId_recogida() {
-        return id_recogida;
+    public void setRecogida(Recogida recogida) {
+        this.recogida = recogida;
     }
 
-    public void setId_recogida(int id_recogida) {
-        this.id_recogida = id_recogida;
+    public Reparto getReparto() {
+        return reparto;
     }
 
-    public int getId_reparto() {
-        return id_reparto;
-    }
-
-    public void setId_reparto(int id_reparto) {
-        this.id_reparto = id_reparto;
+    public void setReparto(Reparto reparto) {
+        this.reparto = reparto;
     }
 }

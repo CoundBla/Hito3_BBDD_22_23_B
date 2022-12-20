@@ -1,14 +1,14 @@
 package ormExpressCorreos.model;
 import java.util.Date;
 
-public class recogida {
+public class Recogida {
     private int id_recogida;
     private int id_usuario;
     private Date fecha_recogida;
     private int id_direccion;
     private String dni_cartero;
 
-    public recogida(int id_recogida, int id_usuario, Date fecha_recogida, int id_direccion, String dni_cartero) {
+    public Recogida(int id_recogida, int id_usuario, Date fecha_recogida, int id_direccion, String dni_cartero) {
         this.id_recogida = id_recogida;
         this.id_usuario = id_usuario;
         this.fecha_recogida = fecha_recogida;

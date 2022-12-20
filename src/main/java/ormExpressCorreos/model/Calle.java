@@ -1,15 +1,27 @@
 package ormExpressCorreos.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "calle")
 public class Calle {
+    @Id
+    @GeneratedValue
+    @Column(name = "id_calle")
     private int id_calle;
+    @Column(name = "nombre_c",nullable = false)
     private String nombre_c;
-    private String nombre_m;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "municipio")
+    private Municipio municipio;
+    @Column(name = "longitud",nullable = true)
     private int longitud;
 
-    public Calle(int id_calle, String nombre_c, String nombre_m, int longitud) {
+    public Calle(){}
+    public Calle(int id_calle, String nombre_c, Municipio municipio, int longitud) {
         this.id_calle = id_calle;
         this.nombre_c = nombre_c;
-        this.nombre_m = nombre_m;
+        this.municipio = municipio;
         this.longitud = longitud;
     }
 
@@ -29,12 +41,12 @@ public class Calle {
         this.nombre_c = nombre_c;
     }
 
-    public String getNombre_m() {
-        return nombre_m;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
-    public void setNombre_m(String nombre_m) {
-        this.nombre_m = nombre_m;
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
     }
 
     public int getLongitud() {
