@@ -2,7 +2,7 @@ package ormExpressCorreos.model;
 
 
 import javax.persistence.*;
-
+import java.util.Set;
 @Entity
 @Table(name = "oficina")
 public class Oficina {
@@ -21,6 +21,9 @@ public class Oficina {
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "direccion")
     private Direccion direccion;
+
+    @OneToMany(mappedBy = "oficina")
+    private Set<Area_de_envio> areas_de_envio;
 
     public Oficina(int id_oficina, String nombre_oficina, Municipio municipio, Direccion direccion) {
         this.id_oficina = id_oficina;

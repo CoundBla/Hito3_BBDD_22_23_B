@@ -23,7 +23,7 @@ public class Cartero {
     @ManyToMany()
     @JoinTable(name = "asociado")
 
-    @OneToMany(mappedBy = "ruta")
+    @OneToMany(mappedBy = "cartero")
     private Set<Reparto> repartos;
 
     private Set<Area_de_envio> areas_de_envio;
