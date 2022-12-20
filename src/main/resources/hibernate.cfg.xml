@@ -14,7 +14,7 @@
     <session-factory>
         <!--Termine de completar la configuración con la base de datos-->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/EXPRESS_CORREOS_HIBERNATE</property>
         <property name="connection.username">root</property>
         <property name="connection.password">123789</property>
 
@@ -31,6 +31,7 @@
         <mapping class="ormExpressCorreos.model.Area_de_envio"/>
         <mapping class="ormExpressCorreos.model.Calle"/>
         <mapping class="ormExpressCorreos.model.Carta"/>
+        <mapping class="ormExpressCorreos.model.Cartacertificada"/>
         <mapping class="ormExpressCorreos.model.Cartero"/>
         <mapping class="ormExpressCorreos.model.Centro_de_clasificacion"/>
         <mapping class="ormExpressCorreos.model.Coche"/>
