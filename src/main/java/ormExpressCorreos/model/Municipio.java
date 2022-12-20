@@ -1,7 +1,18 @@
 package ormExpressCorreos.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "municipio")
 public class Municipio {
+    @Id
+    @Column(name = "nombre_m")
     private String nombre_m;
+
+    @Column(name = "provincia", nullable = false)
     private String provincia;
 
     public Municipio(String nombre_m, String provincia) {

@@ -1,30 +1,60 @@
 package ormExpressCorreos.model;
+import javax.persistence.*;
 import java.util.Date;
 
+
+@Entity
+@Table(name = "oficina")
 public class Paquete {
+    @Id
+    @Column(name = "id_p")
     private String id_p;
+
+    @Column(name = "dimensiones", nullable = false)
     private String dimensiones;
+
+    @Column(name = "alto",nullable = false)
     private int alto;
+
+    @Column(name = "ancho",nullable = false)
     private int ancho;
+
+    @Column(name = "peso",nullable = false)
     private float peso;
+
+    @Column(name = "comentario")
     private String comentario;
-    private int emisor_id;
-    private int receptor_id;
-    private int id_recogida;
-    private int id_reparto;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "emisor")
+    private UsuarioGenerico emisor;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "receptor")
+    private UsuarioGenerico receptor;
+
+    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "direccion")
+    private Recogida recogida;
+
+    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "direccion")
+    private Reparto reparto;
+
+    @Column(name = "fecha_entrega")
     private Date fecha_entrega;
 
-    public Paquete(String id_p, String dimensiones, int alto, int ancho, float peso, String comentario, int emisor_id, int receptor_id, int id_recogida, int id_reparto, Date fecha_entrega) {
+    public Paquete(String id_p, String dimensiones, int alto, int ancho, float peso, String comentario, UsuarioGenerico emisor, UsuarioGenerico receptor, Recogida recogida, Reparto reparto, Date fecha_entrega) {
         this.id_p = id_p;
         this.dimensiones = dimensiones;
         this.alto = alto;
         this.ancho = ancho;
         this.peso = peso;
         this.comentario = comentario;
-        this.emisor_id = emisor_id;
-        this.receptor_id = receptor_id;
-        this.id_recogida = id_recogida;
-        this.id_reparto = id_reparto;
+        this.emisor = emisor;
+        this.receptor = receptor;
+        this.recogida = recogida;
+        this.reparto = reparto;
         this.fecha_entrega = fecha_entrega;
     }
 
@@ -76,36 +106,36 @@ public class Paquete {
         this.comentario = comentario;
     }
 
-    public int getEmisor_id() {
-        return emisor_id;
+    public UsuarioGenerico getEmisor() {
+        return emisor;
     }
 
-    public void setEmisor_id(int emisor_id) {
-        this.emisor_id = emisor_id;
+    public void setEmisor(UsuarioGenerico emisor) {
+        this.emisor = emisor;
     }
 
-    public int getReceptor_id() {
-        return receptor_id;
+    public UsuarioGenerico getReceptor() {
+        return receptor;
     }
 
-    public void setReceptor_id(int receptor_id) {
-        this.receptor_id = receptor_id;
+    public void setReceptor(UsuarioGenerico receptor) {
+        this.receptor = receptor;
     }
 
-    public int getId_recogida() {
-        return id_recogida;
+    public Recogida getRecogida() {
+        return recogida;
     }
 
-    public void setId_recogida(int id_recogida) {
-        this.id_recogida = id_recogida;
+    public void setRecogida(Recogida recogida) {
+        this.recogida = recogida;
     }
 
-    public int getId_reparto() {
-        return id_reparto;
+    public Reparto getReparto() {
+        return reparto;
     }
 
-    public void setId_reparto(int id_reparto) {
-        this.id_reparto = id_reparto;
+    public void setReparto(Reparto reparto) {
+        this.reparto = reparto;
     }
 
     public Date getFecha_entrega() {

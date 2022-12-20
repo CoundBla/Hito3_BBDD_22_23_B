@@ -1,17 +1,33 @@
 package ormExpressCorreos.model;
 
-public class Centro_de_clasificacion {
-    private int codigo;
-    private int num_max_c;
-    private int num_max_p;
-    private int id_oficina;
+import javax.persistence.*;
 
-    public Centro_de_clasificacion(int codigo, int num_max_c, int num_max_p, int id_oficina) {
+@Entity
+@Table(name = "centro_de_clasificacion")
+public class Centro_de_clasificacion {
+    @Id
+    @GeneratedValue
+    @Column(name = "codigo")
+    private int codigo;
+
+    @Column(name = "num_max_c",nullable = true)
+    private int num_max_c;
+
+    @Column(name = "num_max_p", nullable = true)
+    private int num_max_p;
+
+    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "oficina")
+    private Oficina oficina;
+
+    public Centro_de_clasificacion(int codigo, int num_max_c, int num_max_p, Oficina ofi) {
         this.codigo = codigo;
         this.num_max_c = num_max_c;
         this.num_max_p = num_max_p;
-        this.id_oficina = id_oficina;
+        this.oficina = ofi;
     }
+
+    public Centro_de_clasificacion(){}
 
     public int getCodigo() {
         return codigo;
@@ -37,11 +53,11 @@ public class Centro_de_clasificacion {
         this.num_max_p = num_max_p;
     }
 
-    public int getId_oficina() {
-        return id_oficina;
+    public Oficina getOficina() {
+        return oficina;
     }
 
-    public void setId_oficina(int id_oficina) {
-        this.id_oficina = id_oficina;
+    public void setOficina(Oficina newOficina) {
+        this.oficina = newOficina;
     }
 }
