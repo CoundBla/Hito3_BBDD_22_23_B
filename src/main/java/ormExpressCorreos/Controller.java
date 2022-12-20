@@ -42,11 +42,8 @@ public class Controller {
      * @throws SQLException
      */
     public UsuarioGenerico createUsuarioGenerico(String nombre, String apellidos) throws SQLException{
-        UsuarioGenerico nuevoUG = new UsuarioGenerico();
-        nuevoUG.setNombre(nombre);
-        nuevoUG.setApellidos(apellidos);
+        UsuarioGenerico nuevoUG = new UsuarioGenerico(nombre, apellidos);
         return nuevoUG;
-
     }
 
     public UsuarioIdentificado createUsuarioIdentificado(String DNI, String nombre, String apellidos, String email) throws SQLException {
